@@ -56,14 +56,14 @@ fn main() {
     });
 
     //execute moves exc.2
-    for m in moves {
+    moves.iter().for_each(|m| {
         let (crates, from, to) = get_crane_movement(m);
         let s = cargo2[from].clone();
         let (a, b) = s.split_at(s.len() - crates as usize);
         cargo2[from] = a.to_string();
         let n = String::from(&cargo2[to]) + b;
         cargo2[to] = n;
-    }
+    });
 
     print!("\nCrate location with 2nd crane: ");
     cargo2.iter().for_each(|line| {
